@@ -1,5 +1,5 @@
 const { Sequelize } = require('sequelize');
-
+// du an dat lich kham mat
 
 const sequelize = new Sequelize('text', 'root', null, {
     host: 'localhost',
