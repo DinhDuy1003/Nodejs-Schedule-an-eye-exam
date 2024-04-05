@@ -53,6 +53,8 @@ let getEditCRUD=async(req, res) => {
 
     
 }
+
+
 let putCRUD =async(req,res)=>{
     let data= req.body;
     let allUser = await CRUDService.updateUserData(data);
@@ -80,4 +82,5 @@ module.exports = {
     getEditCRUD:getEditCRUD,
     putCRUD:putCRUD,
     deleteCRUD:deleteCRUD,
+    
 }
