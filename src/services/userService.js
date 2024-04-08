@@ -108,9 +108,10 @@ let createNewUser=(data)=>{
         if(check === true){
             resolve({
                 errCode:1,
-                message:'email của bạn đã được sử dụng, vui lòng thử email khác',
+            errMessage:'email của bạn đã được sử dụng, vui lòng thử email khác',
             })
         }
+        else{
         let hashPasswordFromBcrypt= await hashUserPassword(data.password);
         await db.User.create({
             email:data.email,
@@ -126,6 +127,8 @@ let createNewUser=(data)=>{
             errCode:0,
             message:'ok'
         })
+
+        }
        } catch (e) {
         reject(e);
        }
