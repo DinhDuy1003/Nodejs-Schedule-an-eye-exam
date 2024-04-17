@@ -50,7 +50,7 @@ let handleDeleteUser =async(req,res)=>{
         })
     }
     let message=await userService.deleteUser(req.body.id);
-    return res.status(200),json(message);
+    return res.status(200).json(message);
 }
 
 let handleEditUser=async (req,res)=>{
@@ -58,6 +58,12 @@ let handleEditUser=async (req,res)=>{
     let message=await userService.updateUserData(data);
     return res.status(200).json(message)
 }
+// let deleteUser= (id)=> {
+//     return new Promise(async (resolve, reject)=>{
+
+//     })
+// }
+
 module.exports={
     handleLogin:handleLogin,
     handleGetAllUsers:handleGetAllUsers,

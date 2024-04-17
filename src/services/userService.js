@@ -137,10 +137,10 @@ let createNewUser=(data)=>{
 
 let deleteUser=(userId)=>{
     return new Promise(async(resolve,reject)=>{
-        let foundUser=await db.User.findOne({
-            where:{id:userId}
+        let user = await db.User.findOne({    
+            where: {id: userId}
         })
-        if(!foundUser){
+        if(!user){
             resolve({
                 errCode:2,
                 errMessage:'Người dùng không tồn tại'
