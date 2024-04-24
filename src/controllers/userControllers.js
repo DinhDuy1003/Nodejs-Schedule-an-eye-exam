@@ -58,11 +58,21 @@ let handleEditUser=async (req,res)=>{
     let message=await userService.updateUserData(data);
     return res.status(200).json(message)
 }
-// let deleteUser= (id)=> {
-//     return new Promise(async (resolve, reject)=>{
 
-//     })
-// }
+let getAllCode= async(req, res)=>{
+    try {
+        let data =await userService.getAllCodeService(req.query.type);
+        console.log(data);
+        return res.status(200).json(data);
+    } catch (e) {
+        console.log(e);
+        return res.status(200).json({
+            errCode:-1,
+            errMessage:"Lỗi Server"
+        })
+    }
+}
+
 
 module.exports={
     handleLogin:handleLogin,
@@ -70,4 +80,5 @@ module.exports={
     handleCreateNewUser:handleCreateNewUser,
     handleDeleteUser:handleDeleteUser,
     handleEditUser:handleEditUser,
+    getAllCode:getAllCode,
 }
