@@ -21,11 +21,12 @@ let initWebRoutes = (app) => {
     router.post('/api/create-new-user',userControllers.handleCreateNewUser);
     router.put('/api/edit-user',userControllers.handleEditUser);
     router.delete('/api/delete-user',userControllers.handleDeleteUser);
-    router.get('/api/allcode',userControllers.getAllCode)
+    router.get('/api/allcode',userControllers.getAllCode);
 
-   router.get('/api/top-doctor-home',doctorController.getTopDoctorHome)
-   router.get('/api/get-all-doctors',doctorController.getAllDoctors)
-   router.post('/api/save-infor-doctors',doctorController.postinforDoctor)
+   router.get('/api/top-doctor-home',doctorController.getTopDoctorHome);
+   router.get('/api/get-all-doctors',doctorController.getAllDoctors);
+   router.post('/api/save-infor-doctors',doctorController.postinforDoctor);
+   router.get('/api/get-detail-doctor-by-id',doctorController.getDetailDoctorById);
     return app.use("/", router);
 }
 
