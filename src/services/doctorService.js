@@ -1,4 +1,6 @@
+import { where } from "sequelize";
 import db from "../models/index";
+import { raw } from "body-parser";
 
 let getTopDoctorHome = async () => {
     try {
@@ -61,18 +63,33 @@ let getAllDoctors = () =>{
 let saveDetaiInforDoctor =(inputdata) =>{
     return new Promise(async(resolve, reject)=>{
         try {
-            if(!inputdata.doctorId || !inputdata.contentHTML || !inputdata.contentMardown){
+            if(!inputdata.doctorId || !inputdata.contentHTML || !inputdata.contentMardown || !inputdata.action){
                 resolve({
                     errCode:1,
                     errMessage:'Missing parameter'
                 })
             }else{
-                await db.Markdown.create({
-                    contentHTML:inputdata.contentHTML,
-                    contentMardown:inputdata.contentMardown,
-                    description:inputdata.description,
-                    doctorId:inputdata.doctorId,
-                })
+                if(inputdata.action === 'CREATE'){
+                    await db.Markdown.create({
+                        contentHTML:inputdata.contentHTML,
+                        contentMardown:inputdata.contentMardown,
+                        description:inputdata.description,
+                        doctorId:inputdata.doctorId,
+                    })
+                }else if (inputdata.action ==='EDIT'){
+                    let doctorMarkdown = await db.Markdown.findOne({
+                        where:{doctorId :inputdata.doctorId},
+                        raw: false
+                    })
+                    if(doctorMarkdown){
+                        doctorMarkdown.contentHTML=inputdata.contentHTML,
+                        doctorMarkdown.contentMardown=inputdata.contentMardown,
+                        doctorMarkdown.description=inputdata.description,
+                        doctorMarkdown.updateAt =new Date(),
+                        await doctorMarkdown.save()
+                    }
+                }
+              
                 resolve({
                     errCode:0,
                     errMessage:'save infor doctor succeed'
