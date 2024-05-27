@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Doctor_Infor.init({
     doctorId: DataTypes.INTEGER,
-    ppriceId: DataTypes.STRING,
+    priceId: DataTypes.STRING,
     provinceId: DataTypes.STRING,
     paymentId: DataTypes.STRING,
     addressClinic: DataTypes.STRING,
@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Doctor_Infor',
+    freezeTableName:true
   });
   return Doctor_Infor;
 };
