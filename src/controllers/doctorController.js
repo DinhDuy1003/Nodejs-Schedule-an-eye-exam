@@ -74,7 +74,7 @@ let getScheduleDyDate =async (req,res) =>{
             infor
         )
     } catch (e) {
-        console(e);
+        console.log(e);
         return res.status(200).json({
             errCode: -1,
             message :'Error from server...'
@@ -86,7 +86,7 @@ let getExraInforDoctorByid =async (req, res)=>{
         let infor =await doctorService.getExraInforDoctorByid(req.query.doctorId);
         return res.status(200).json(infor)
     }catch(e){
-        console(e);
+        console.log(e);
         return res.status(200).json({
             errCode: -1,
             message :'Error from server...'
@@ -99,7 +99,35 @@ let getProfileDoctorByid =async (req, res)=>{
         let infor =await doctorService.getProfileDoctorByid(req.query.doctorId);
         return res.status(200).json(infor)
     }catch(e){
-        console(e);
+        console.log(e);
+        return res.status(200).json({
+            errCode: -1,
+            message :'Error from server...'
+        }) 
+    }
+}
+
+
+let getListPatientForDoctor =async (req, res)=>{
+    try{
+        let infor =await doctorService.getListPatientForDoctor(req.query.doctorId,req.query.date);
+        return res.status(200).json(infor)
+    }catch(e){
+        console.log(e);
+        return res.status(200).json({
+            errCode: -1,
+            message :'Error from server...'
+        }) 
+    }
+}
+
+
+let sendRemedy =async (req, res)=>{
+    try{
+        let infor =await doctorService.sendRemedy(req.body);
+        return res.status(200).json(infor)
+    }catch(e){
+        console.log(e);
         return res.status(200).json({
             errCode: -1,
             message :'Error from server...'
@@ -117,4 +145,7 @@ module.exports = {
      getScheduleDyDate:getScheduleDyDate,
      getExraInforDoctorByid:getExraInforDoctorByid,
      getProfileDoctorByid:getProfileDoctorByid,
+     getListPatientForDoctor:getListPatientForDoctor,
+     sendRemedy:sendRemedy
+
 }
