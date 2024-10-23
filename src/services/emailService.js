@@ -13,7 +13,7 @@ let sendSimpleEmail = async (dataSend) =>{
       });
 
       let info = await transporter.sendMail({
-        from: '"MedBooking" <dangdinhduy3939@gmail.com>', // sender address
+        from: '"MedBooking." <dangdinhduy3939@gmail.com>', // sender address
         to: dataSend.reciverEmail, // list of receivers
         subject: "Thông Tin Đặt Lịch Khám Bệnh ✔", // Subject lin
         html: getBodyHTMLEmail(dataSend), // html body
