@@ -26,7 +26,7 @@ let getBodyHTMLEmail = (dataSend)=>{
   if(dataSend.language === 'vi'){
     result =`
     <h3> Xin Chào ${dataSend.patientName}!</h3>
-    <p>Bạn nhận được email này vi đã đặt lịch khám bệnh online trên MedBooking</p>
+    <p>Bạn nhận được email này vì đã đặt lịch khám bệnh online trên MedBooking</p>
     <p>Thông tin đặt lịch khám bệnh:<p/>
     <div><b>Thời gian:  ${dataSend.time} :</b></div>
     <div><b>Bác Sĩ:  ${dataSend.doctorName} </b></div>
